@@ -11,7 +11,7 @@ object Main extends IOApp {
   private val logger = Logger(LoggerFactory.getLogger(this.getClass))
 
   val postgres = new Postgres[IO]
-  val spark    = new SparkStreaming(1)
+  val spark    = new SparkStreaming(5)
   val kafka    = new Kafka(spark)
 
   override def run(args: List[String]): IO[ExitCode] = for {
