@@ -4,7 +4,7 @@ version := "0.1"
 
 scalaVersion := "2.12.10"
 
-assemblyMergeStrategy / assembly := {
+ThisBuild / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
   case x                             => MergeStrategy.first
 }
