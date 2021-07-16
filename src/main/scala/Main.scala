@@ -11,11 +11,20 @@ object Main extends IOApp {
   private val logger = Logger(LoggerFactory.getLogger(this.getClass))
 
   val postgres = new Postgres[IO]
-  val spark    = new SparkStreaming(5)
+  val spark    = new SparkStreaming(1)
   val kafka    = new Kafka(spark)
 
   override def run(args: List[String]): IO[ExitCode] = for {
     _ <- postgres.migrate
+    _ =
+      if (args.length == 1)
+        println(
+          s"DB migrated! Start counting packets with src ${args.mkString(" ")}",
+        )
+      else
+        println(
+          s"DB migrated! Start counting packets without filter",
+        )
     _ = kafka.admin.createTopics(List(kafka.topic).asJava)
     _ = spark
       .customReceiverStream(args)

@@ -4,7 +4,12 @@ version := "0.1"
 
 scalaVersion := "2.12.10"
 
-lazy val catsCore         = "2.4.2"
+assemblyMergeStrategy / assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x                             => MergeStrategy.first
+}
+
+lazy val catsCore         = "2.1.1"
 lazy val doobieVersion    = "0.12.1"
 lazy val logBack          = "1.2.3"
 lazy val scalaLogging     = "3.9.3"
