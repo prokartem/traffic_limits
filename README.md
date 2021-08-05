@@ -1,5 +1,5 @@
 ## traffic_limits
-Count all traffic or from custom source and check if it reached limits. Implemented with pcap4j, Spark Streaming, Kafka, PostgreSQL.
+Count all traffic or from custom source and check if it reached limits then send alert to Kafka. Implemented with pcap4j, Spark Streaming, Kafka, PostgreSQL.
 
 # Launching
 1. Download libpcap
